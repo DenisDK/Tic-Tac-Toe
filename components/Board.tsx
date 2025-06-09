@@ -8,7 +8,7 @@ interface BoardProps {
 const Board: React.FC<BoardProps> = ({ board, onCellClick }) => {
   return (
     <div
-      className="grid gap-1"
+      className="grid gap-1 bg-[#2b2b2b] p-4 rounded-lg shadow-md"
       style={{
         gridTemplateColumns: `repeat(${board.length}, 1fr)`,
       }}

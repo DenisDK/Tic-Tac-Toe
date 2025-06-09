@@ -6,7 +6,7 @@ interface NewGameButtonProps {
 
 const NewGameButton: React.FC<NewGameButtonProps> = ({ onClick }) => (
   <button
-    className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
+    className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 duration-300"
     onClick={onClick}
   >
     Нова гра

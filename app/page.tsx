@@ -116,24 +116,26 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center h-screen gap-4 p-6">
-      <div className="flex gap-8">
-        {players.map((player) => (
-          <PlayerInfo
-            key={player.id}
-            player={player}
-            time={playerTimes[player.symbol]}
-          />
-        ))}
+      <div className="max-w-3xl mx-auto">
+        <div className="flex justify-between items-center">
+          {players.map((player) => (
+            <PlayerInfo
+              key={player.id}
+              player={player}
+              time={playerTimes[player.symbol]}
+            />
+          ))}
+        </div>
+        <GameStatus
+          players={players}
+          gamesPlayed={gamesPlayed}
+          currentPlayer={currentPlayer}
+        />
+        <GameControls
+          selectedSize={selectedSize}
+          onSizeChange={handleSizeChange}
+        />
       </div>
-      <GameStatus
-        players={players}
-        gamesPlayed={gamesPlayed}
-        currentPlayer={currentPlayer}
-      />
-      <GameControls
-        selectedSize={selectedSize}
-        onSizeChange={handleSizeChange}
-      />
       <Board board={board} onCellClick={handleCellClick} />
       <NewGameButton onClick={handleNewGame} />
       <Modal

@@ -8,7 +8,7 @@ interface PlayerInfoProps {
 
 const PlayerInfo: React.FC<PlayerInfoProps> = ({ player, time }) => {
   return (
-    <div className="p-4 border rounded-lg shadow-md w-64">
+    <div className="p-4 bg-[#2b2b2b] rounded-lg shadow-2xs w-64">
       <h2 className="text-lg font-bold mb-2">ГРАВЕЦЬ {player.id}</h2>
       <p>
         Символ: <strong>{player.symbol}</strong>
