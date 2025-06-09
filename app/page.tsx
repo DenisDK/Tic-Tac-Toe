@@ -106,7 +106,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    if (modalOpen) {
+    if (modalOpen || gameEnded) {
       if (intervalId) clearInterval(intervalId);
       return;
     }
@@ -118,7 +118,7 @@ export default function Home() {
     }, 1000);
     setIntervalId(id);
     return () => clearInterval(id);
-  }, [modalOpen, currentPlayer]);
+  }, [modalOpen, gameEnded, currentPlayer]);
 
   return (
     <main className="flex flex-col items-center justify-center h-screen gap-4 p-6">
