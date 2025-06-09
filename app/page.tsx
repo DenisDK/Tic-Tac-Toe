@@ -37,8 +37,10 @@ export default function Home() {
   const [turnStart, setTurnStart] = useState<number>(Date.now());
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
+  const [gameEnded, setGameEnded] = useState(false);
+
   function handleCellClick(row: number, col: number) {
-    if (board[row][col]) return;
+    if (gameEnded || board[row][col]) return;
 
     setPlayerTimes((prev) => ({
       ...prev,
@@ -56,6 +58,7 @@ export default function Home() {
         )
       );
       setGamesPlayed(gamesPlayed + 1);
+      setGameEnded(true);
 
       const winner = players.find((p) => p.symbol === currentPlayer);
       const winnerTime = playerTimes[currentPlayer];
@@ -71,6 +74,7 @@ export default function Home() {
 
     if (isDraw(newBoard)) {
       setGamesPlayed(gamesPlayed + 1);
+      setGameEnded(true);
 
       const totalTime = playerTimes["X"] + playerTimes["O"];
       setTimeout(() => {
@@ -97,6 +101,7 @@ export default function Home() {
     setCurrentPlayer("X");
     setPlayerTimes({ X: 0, O: 0 });
     setTurnStart(Date.now());
+    setGameEnded(false);
   }
 
   useEffect(() => {
@@ -112,12 +117,13 @@ export default function Home() {
     }, 1000);
     setIntervalId(id);
     return () => clearInterval(id);
-  }, [currentPlayer, modalOpen]);
+  }, [modalOpen, currentPlayer]);
 
   return (
     <main className="flex flex-col items-center justify-center h-screen gap-4 p-6">
       <div className="max-w-3xl mx-auto">
-        <div className="flex justify-between items-center">
+        <h1 className="text-center text-2xl font-bold">Хрестики Нулики</h1>
+        <div className="flex justify-between items-center mt-4">
           {players.map((player) => (
             <PlayerInfo
               key={player.id}
