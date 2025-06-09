@@ -8,7 +8,7 @@ interface BoardProps {
 const Board: React.FC<BoardProps> = ({ board, onCellClick }) => {
   return (
     <div
-      className="grid gap-1 bg-[#2b2b2b] p-4 rounded-lg shadow-md"
+      className="grid gap-2 bg-[#2b2b2b] p-4 rounded-lg shadow-md"
       style={{
         gridTemplateColumns: `repeat(${board.length}, 1fr)`,
       }}
@@ -18,7 +18,7 @@ const Board: React.FC<BoardProps> = ({ board, onCellClick }) => {
           <button
             key={`${rowIndex}-${colIndex}`}
             onClick={() => onCellClick(rowIndex, colIndex)}
-            className="w-12 h-12 border text-xl font-bold"
+            className="w-12 h-12 bg-[#555555] rounded-md text-xl font-bold"
           >
             {cell}
           </button>
