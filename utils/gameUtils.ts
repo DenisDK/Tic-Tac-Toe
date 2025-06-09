@@ -1,3 +1,4 @@
+import { CellValue } from "@/types/CellValue";
 import { SymbolType } from "@/types/Player";
 
 export function checkWinner(board: CellValue[][], symbol: SymbolType): boolean {

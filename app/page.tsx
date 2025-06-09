@@ -11,6 +11,7 @@ import Board from "@/components/Board";
 import Modal from "@/components/Modal";
 import { Player, SymbolType } from "@/types/Player";
 import { checkWinner, initBoard, isDraw } from "@/utils/gameUtils";
+import { CellValue } from "@/types/CellValue";
 
 export default function Home() {
   const [players, setPlayers] = useState<Player[]>([
